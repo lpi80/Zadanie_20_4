@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production"
+    "startServer": "webpack-dev-server --open --env development",
+    "buildServer": "webpack-dev-server --open --env production",
+    "start": "webpack --env development",
+    "build": "webpack --env production"
   },
   "repository": {
     "type": "git",
@@ -24,10 +26,14 @@
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "style-loader": "^0.23.1",
+    "uuid": "^3.3.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
-  }
+  },
+  "dependencies": {}
 }
