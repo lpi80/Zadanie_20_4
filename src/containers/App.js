@@ -2,6 +2,16 @@ import React from 'react';
 import uuid from 'uuid';
 import style from './App.css';
 //import Title from './Title';
+//import TodoList from '../components/TodoList';
+
+
+const TodoList = props  => {
+    const data = props.data.map(todo => {
+        return <li><b>text:</b> {todo.text} <b>id:</b> <i>{todo.id}</i></li>;
+    });
+    return data
+}
+
 
 const Title = props => {
     return <h1>{props.name}</h1>
@@ -11,7 +21,16 @@ class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            data: []
+            data: [{
+                id: 1,
+                    text: 'clean room'
+                }, {
+                id: 2,
+                    text: 'wash the dishes'
+                }, {
+                id: 3,
+                    text: 'feed my cat'
+                }]
         };
         this.addClick = this.addClick.bind(this);
     }
@@ -19,8 +38,8 @@ class App extends React.Component {
     
     addTodo(val){
         const todo = {
-            text: val,
             id: uuid.v4(),
+            text: val,
         };
         const data = [...this.state.data, todo];
         this.setState({data});
@@ -46,7 +65,7 @@ class App extends React.Component {
             <div className={style.TodoApp}>
                 <button onClick = {this.addClick}>Add</button>
                 <Title name = "tescik"/>
-                <ul>{this.data}</ul>
+                <TodoList data = {this.state.data}/>
                 Tutaj pojawią się komponenty naszej aplikacji.
             </div>
         );
