@@ -1,28 +1,17 @@
 import React from 'react';
 import uuid from 'uuid';
 import style from './App.css';
-//import Title from './Title';
-//import TodoList from '../components/TodoList';
-
-
-const TodoList = props  => {
-    const data = props.data.map(todo => {
-        return <li><b>text:</b> {todo.text} <b>id:</b> <i>{todo.id}</i></li>;
-    });
-    return data
-}
-
-
-const Title = props => {
-    return <h1>{props.name}</h1>
-}
+import Title from '../components/Title';
+import TodoList from '../components/TodoList';
+import TodoForm from '../components/TodoForm'
+import { hot } from 'react-hot-loader';
 
 class App extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             data: [{
-                id: 1,
+                id: 5,
                     text: 'clean room'
                 }, {
                 id: 2,
@@ -33,6 +22,7 @@ class App extends React.Component {
                 }]
         };
         this.addClick = this.addClick.bind(this);
+        this.removeTodo = this.removeTodo.bind(this);
     }
 
     
@@ -57,19 +47,15 @@ class App extends React.Component {
     }
 
     render() {
-        this.data = this.state.data.map(todo => {
-            return <li><b>text:</b> {todo.text} <b>id:</b> <i>{todo.id}</i></li>;
-        });
-  
         return (
             <div className={style.TodoApp}>
-                <button onClick = {this.addClick}>Add</button>
-                <Title name = "tescik"/>
-                <TodoList data = {this.state.data}/>
-                Tutaj pojawią się komponenty naszej aplikacji.
+                <TodoForm click={this.addClick} name="Add"/>
+                <Title name="Lista zadan do wykonania"/>
+                <TodoList data={this.state.data} remove={this.removeTodo}/>
+                
             </div>
         );
     }
 }
 
-export default App;
+export default hot(module)(App);

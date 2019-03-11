@@ -1,0 +1,25 @@
+.TodoList {
+    padding-inline-start: 0;
+    list-style-type: none;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    min-width: 250px;
+
+}
+.TodoList li {
+    padding: 10px;
+}
+.TodoList li:nth-child(even) {
+    background: gray;
+    color: white;
+}
+.TodoList li:nth-child(odd) {
+    background: lightgrey;
+    color: balck;
+}
+
+.TodoList :hover {
+    cursor: pointer;
+}
