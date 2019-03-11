@@ -7,8 +7,8 @@ import TodoForm from '../components/TodoForm'
 import { hot } from 'react-hot-loader';
 
 class App extends React.Component {
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
             data: [{
                 id: 5,
@@ -33,7 +33,6 @@ class App extends React.Component {
         };
         const data = [...this.state.data, todo];
         this.setState({data});
-        console.dir(this.state.data);
     }
 
     removeTodo(id) {
@@ -42,7 +41,7 @@ class App extends React.Component {
     }
 
     addClick() {
-        let newName = prompt("Enter the name of the card");
+        const newName = prompt("Wpisz zadanie do wykonania");
         this.addTodo(newName);
     }
 
